@@ -4,11 +4,15 @@ The goal is to use tests to drive the design of a web application that renders H
 
 The HTML rendering is already wired up, so the only real work is to figure out how to test the remaining interactions with the server and the DOM.
 
+## First
+
+The run & setup instructions are more or less the same as those in `<repo_root>/sandbox/README.md`. Follow those for first getting set up.
+
 ## Hints
 
 ### AJAX
 
-Example jQuery snippet for asking the server for the Fibonacci value at a given index:
+There's an Express server included that can calculate Fibonacci values for a given index. Here's an example jQuery snippet for asking the server for the Fibonacci value at a given index:
 
     $.post('/fibonacci', {index: 21}, function(result){ console.log(result) })
 
