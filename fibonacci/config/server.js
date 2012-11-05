@@ -8,32 +8,13 @@ app.configure(function() {
   app.use(express.errorHandler());
 });
 
-app.all('*', function(req, res) {
-  var payload = req.method === "GET" ? req.query : req.body,
-      url = "http://localhost:" + port() + req.path;
-
-  request[req.method.toLowerCase()](url, { form: payload }, function(error, response, body) {
-    if (!error && response !== undefined && response.statusCode === 200) {
-      res.json(response.statusCode, body ? parseBody(body) : { message: "No body"});
-    } else {
-      res.json((response && response.statusCode) || 500, {
-        message: "express server failed to proxy request",
-        error: error
-      });
-    }
-  });
+app.post('/fibonacci', function(req, res) {
+  res.json(fibonacciFor(req.body['index']));
 });
 
-var port = function() {
-  return process.env.API_PORT || "3000";
-};
-
-var parseBody = function(body) {
-  try {
-    return JSON.parse(body);
-  } catch(oops) {
-    return body;
-  }
-};
+var fibonacciFor = function(n) {
+  if(n <= 1) return n;
+  return fibonacciFor(n-1) + fibonacciFor(n-2)
+}
 
 module.exports = app;
