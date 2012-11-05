@@ -27,7 +27,7 @@
 
       jasmineEnv.execute();
 
-    }, 1);
+    }, 500);
   };
 
   if(document.addEventListener) {
