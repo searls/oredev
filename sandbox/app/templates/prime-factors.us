@@ -1,0 +1,8 @@
+<form>
+  <label for="number">Find factors for:</label>
+  <input id="number" name="number"/>
+  <button id="findFactors">Go</button>
+</form>
+<p>
+  Result: <span id="result"></span>
+</p>
